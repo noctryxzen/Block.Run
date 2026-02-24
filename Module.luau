@@ -5,7 +5,8 @@ local GetService = setmetatable({}, {
 	end
 })
 
-Block = {}
+getgenv().Block = {}
+
 --// Check if Player is Blocked
 function Block.IsBlocked(Player)
 	GetService.VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Escape, false, game)
@@ -23,6 +24,10 @@ function Block.Run(Player)
 	if Player then
 		if Player == GetService.Players.LocalPlayer then return end
 		if Block.IsBlocked(Player) == false then
+			local Lock = Instance.new("ScreenGui")
+			Lock.DisplayOrder = 2147483647
+			Lock.IgnoreGuiInset = true
+			Lock.Parent = gethui and gethui() or GetService.CoreGui.RobloxGui
 			GetService.StarterGui:SetCore("PromptBlockPlayer", Player)
 			task.wait(.2)
 			local ___ = GetService.CoreGui:FindFirstChild("BlockingModalScreen")
@@ -35,6 +40,7 @@ function Block.Run(Player)
 					repeat task.wait(.1) ____ += .1 until not GetService.CoreGui:FindFirstChild("BlockingModalScreen") or ____ >= 2
 				end
 			end
+			Lock:Destroy()
 		end
 	else
 		local _ = GetService.Players:GetPlayers()
