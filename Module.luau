@@ -11,11 +11,13 @@ local IsMobile = GetService.UserInputService.TouchEnabled and not GetService.Use
 --// Check if Player is Blocked
 function Block.IsBlocked(Player)
 	if IsMobile then
-		local MenuButton = GetService.CoreGui.RobloxGui:FindFirstChild("MenuButton", true)
-		if MenuButton then
-			GetService.VirtualInputManager:SendTouchEvent(0, 0, MenuButton.AbsolutePosition.X + MenuButton.AbsoluteSize.X / 2, MenuButton.AbsolutePosition.Y + MenuButton.AbsoluteSize.Y / 2)
-			task.wait(.05)
-			GetService.VirtualInputManager:SendTouchEvent(0, 1, MenuButton.AbsolutePosition.X + MenuButton.AbsoluteSize.X / 2, MenuButton.AbsolutePosition.Y + MenuButton.AbsoluteSize.Y / 2)
+		for i, v in next, GetService.CoreGui.RobloxGui:GetDescendants() do
+			if v.Name == "MenuButton" and v:IsA("GuiButton") then
+				GetService.VirtualInputManager:SendTouchEvent(0, 0, v.AbsolutePosition.X + v.AbsoluteSize.X / 2, v.AbsolutePosition.Y + v.AbsoluteSize.Y / 2)
+				task.wait(.05)
+				GetService.VirtualInputManager:SendTouchEvent(0, 1, v.AbsolutePosition.X + v.AbsoluteSize.X / 2, v.AbsolutePosition.Y + v.AbsoluteSize.Y / 2)
+				break
+			end
 		end
 	else
 		GetService.VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Escape, false, game)
