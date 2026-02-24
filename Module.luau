@@ -30,7 +30,7 @@ function Block.Run(Player)
 					if IsMobile then
 						GetService.VirtualInputManager:SendTouchEvent(0, 0, ___.AbsolutePosition.X + ___.AbsoluteSize.X / 2, ___.AbsolutePosition.Y + ___.AbsoluteSize.Y / 2 + 42)
 						task.wait(.05)
-						GetService.VirtualInputManager:SendTouchEvent(0, 1, ___.AbsolutePosition.X + ___.AbsoluteSize.X / 2, ___.AbsolutePosition.Y + ___.AbsoluteSize.Y / 2 + 42)
+						GetService.VirtualInputManager:SendTouchEvent(0, 2, ___.AbsolutePosition.X + ___.AbsoluteSize.X / 2, ___.AbsolutePosition.Y + ___.AbsoluteSize.Y / 2 + 42)
 					else
 						GetService.VirtualInputManager:SendMouseButtonEvent(___.AbsolutePosition.X + ___.AbsoluteSize.X / 2, ___.AbsolutePosition.Y + ___.AbsoluteSize.Y / 2 + 42, 0, true, game, 0)
 						GetService.VirtualInputManager:SendMouseButtonEvent(___.AbsolutePosition.X + ___.AbsoluteSize.X / 2, ___.AbsolutePosition.Y + ___.AbsoluteSize.Y / 2 + 42, 0, false, game, 0)
