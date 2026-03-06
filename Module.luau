@@ -15,7 +15,7 @@ function Block.Run(Player)
 			task.wait(.3)
 			Screen = GetService.CoreGui:WaitForChild("BlockingModalScreen")
 			if Screen then
-				Screen = Screen:WaitForChild("3", true)
+				Screen = Screen:FindFirstChild("3", true)
 				if Screen then
 					if IsMobile then
 						GetService.VirtualInputManager:SendTouchEvent(0, 0, Screen.AbsolutePosition.X + Screen.AbsoluteSize.X / 2, Screen.AbsolutePosition.Y + Screen.AbsoluteSize.Y / 2 + 42)
