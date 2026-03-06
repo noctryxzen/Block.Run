@@ -11,7 +11,7 @@ function Block.Run(Player)
 		if Player == GetService.Players.LocalPlayer then return end
 		if not Block.IsBlocked(Player) then
 			GetService.StarterGui:SetCore("PromptBlockPlayer", Player)
-			task.wait(.2)
+			task.wait(.3)
 			Screen = GetService.CoreGui:FindFirstChild("BlockingModalScreen")
 			if Screen then
 				Screen = Screen:FindFirstChild("3", true)
